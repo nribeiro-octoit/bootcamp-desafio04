@@ -26,7 +26,12 @@ export default function App() {
         return response.data;
       });
 
-    setRepositories([...repositories.filter(repository => repository.id !== id), repository])
+    setRepositories([repositories.map(repo => 
+      repo.id === repository.id 
+      ? repository 
+      : repo)]
+    )  
+    //setRepositories([...repositories.filter(repository => repository.id !== id), repository])
   }
 
   return (
