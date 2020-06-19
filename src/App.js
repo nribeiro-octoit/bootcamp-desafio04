@@ -12,11 +12,11 @@ import {
 } from "react-native";
 
 export default function App() {
-  const [repositories, SetRepositories] = useState([]);
+  const [repositories, setRepositories] = useState([]);
 
   useEffect(() => {
     api.get('repositories').then(response => {
-      SetRepositories(response.data);
+      setRepositories(response.data);
     });
   }, []);
 
@@ -26,10 +26,7 @@ export default function App() {
         return response.data;
       });
 
-    SetRepositories([...repositories.filter(repository => repository.id !== id), repository])
-
-
-    // Implement "Like Repository" functionality
+    setRepositories([...repositories.filter(repository => repository.id !== id), repository])
   }
 
   return (
